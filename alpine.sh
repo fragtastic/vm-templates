@@ -123,7 +123,7 @@ create_user_from_github() {
 }
 
 usage() {
-    echo "Usage: $0 [docker|qemu|color|ssh|user <local_username> <github_username>|all]"
+    echo "Usage: $0 [docker|qemu-agent|color|ssh|user <local_username> <github_username>|all]"
     echo "Note: [all] does not handle [user], please run that separately as needed."
     exit 1
 }
@@ -144,7 +144,7 @@ for arg in "$@"; do
         color) enable_color_prompt ;;
         docker) install_docker ;;
         ssh) harden_ssh ;;
-        qemu) install_qemu_guest_agent ;;
+        qemu-agent) install_qemu_guest_agent ;;
         user) shift; create_user_from_github "$@" ;;
         *) usage ;;
     esac
